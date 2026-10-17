@@ -11,7 +11,7 @@ gitignored. Never commit them.
 
 ## Raw input
 
-A Parquet file (default `data/data.parquet`), treated as immutable, produced from macOS
+A Parquet file (default `data/raw/data.parquet`), treated as immutable, produced from macOS
 `chat.db` (see the exploratory notebook for the extraction query). Required columns:
 
 | column | meaning |
@@ -83,7 +83,7 @@ Annotations live outside the corpus (e.g. `data/annotations/labels.csv`) with co
 ## Rebuilding
 
 ```bash
-python -m veto.corpus [--raw data/data.parquet] [--out data/corpus/corpus.parquet] \
+python -m veto.corpus [--raw data/raw/data.parquet] [--out data/corpus/corpus.parquet] \
     [--annotations data/annotations/labels.csv]
 ```
 

@@ -18,7 +18,7 @@ from veto.corpus import cleaning, labeling, schema
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_RAW_PATH = Path("data/data.parquet")
+DEFAULT_RAW_PATH = Path("data/raw/data.parquet")
 DEFAULT_CORPUS_PATH = Path("data/corpus/corpus.parquet")
 
 #: Messages group chats use identifiers like ``chat123456789``; 1:1 chats use the

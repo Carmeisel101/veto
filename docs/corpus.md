@@ -99,3 +99,12 @@ reported in the build summary.
 
 Train/test splitting, deduplication, rule-based labeling, feature engineering, TF-IDF/embeddings,
 SignaPy analysis, modeling, Core ML, or any iOS work.
+
+## Solicitation labels (training phase)
+
+The binary training labels are kept apart from the corpus in
+`data/annotations/solicitation_labels.csv` and joined by `veto corpus inspect` into
+`data/processed/labeled.parquet` (adds `label`, `label_name`, `subtype`, `review_required`,
+`review_reason`, `group_id`, `split`). The corpus's own `political/non_political/uncertain`
+columns are not used for training. `group_id` comes from aggressive normalization (URLs, phone
+numbers, digits masked; word-3-shingle Jaccard >= 0.5) and is used only for grouped splitting.

@@ -12,7 +12,11 @@ gitignored. Never commit them.
 ## Raw input
 
 A Parquet file (default `data/raw/data.parquet`), treated as immutable, produced from macOS
-`chat.db` (see the exploratory notebook for the extraction query). Required columns:
+`chat.db` by `scripts/extract_raw.py` (logic in `src/veto/extraction/`). The extraction keeps
+incoming messages only, does **not** filter on non-null `text`, and recovers bodies from the
+`attributedBody` blob when `message.text` is NULL (common on recent macOS). By default it keeps
+the last 6 months (`--months 0` for everything); a message in several chats yields one row.
+Required columns:
 
 | column | meaning |
 |---|---|
@@ -83,8 +87,11 @@ Annotations live outside the corpus (e.g. `data/annotations/labels.csv`) with co
 ## Rebuilding
 
 ```bash
-python -m veto.corpus [--raw data/raw/data.parquet] [--out data/corpus/corpus.parquet] \
-    [--annotations data/annotations/labels.csv]
+uv run veto corpus build        # defaults: data/raw/data.parquet -> data/corpus/corpus.parquet
+
+# custom paths (and optional annotations in the original political/non_political scheme):
+uv run python -m veto.corpus --raw data/raw/data.parquet --out data/corpus/corpus.parquet \
+    --annotations data/annotations/labels.csv
 ```
 
 Logs contain aggregate counts only, never message text.
@@ -99,3 +106,12 @@ reported in the build summary.
 
 Train/test splitting, deduplication, rule-based labeling, feature engineering, TF-IDF/embeddings,
 SignaPy analysis, modeling, Core ML, or any iOS work.
+
+## Solicitation labels (training phase)
+
+The binary training labels are kept apart from the corpus in
+`data/annotations/solicitation_labels.csv` and joined by `veto corpus inspect` into
+`data/processed/labeled.parquet` (adds `label`, `label_name`, `subtype`, `review_required`,
+`review_reason`, `group_id`, `split`). The corpus's own `political/non_political/uncertain`
+columns are not used for training. `group_id` comes from aggressive normalization (URLs, phone
+numbers, digits masked; word-3-shingle Jaccard >= 0.5) and is used only for grouped splitting.

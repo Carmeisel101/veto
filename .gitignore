@@ -51,3 +51,9 @@ dist/
 # notebooks under eda/ are kept local; clear outputs before moving any
 # notebook to notebooks/ for commit.
 eda/
+
+# Model artifacts and run outputs (may embed private message text)
+models/
+artifacts/
+checkpoints/
+outputs/

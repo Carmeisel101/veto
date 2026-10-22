@@ -1,4 +1,4 @@
-"""Command-line interface: ``veto <command>`` (also installed as ``vito``)."""
+"""Command-line interface: ``veto <command>``."""
 
 from __future__ import annotations
 

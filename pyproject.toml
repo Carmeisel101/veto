@@ -29,7 +29,6 @@ dev = [
 [project.scripts]
 veto-build-corpus = "veto.corpus.builder:main"
 veto = "veto.cli:main"
-vito = "veto.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

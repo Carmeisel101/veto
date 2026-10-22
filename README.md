@@ -7,16 +7,16 @@ primary Messages inbox.
 ## Status
 
 Early development. Implemented: corpus construction, binary labeling, a MiniLM embedding
-baseline, MiniLM fine-tuning, evaluation/error analysis, and a Python inference API. **Vito v1 is
+baseline, MiniLM fine-tuning, evaluation/error analysis, and a Python inference API. **Veto v1 is
 a pipeline proof, not a usable filter**: the current private dataset has only 3 positive
 examples, so every reported metric is anecdotal. No Swift/iOS/Core ML code exists.
 
 ## What counts as political solicitation
 
-Vito answers: *is this unsolicited political outreach the user would want filtered?* Positives
+Veto answers: *is this unsolicited political outreach the user would want filtered?* Positives
 include campaign messages, fundraising, advocacy, petitions, GOTV/election-information outreach,
 polls used as outreach, and event/volunteer asks. A friend discussing the election is **not**
-solicitation; Vito detects political outreach, not political language. Subtypes
+solicitation; Veto detects political outreach, not political language. Subtypes
 (`campaign`, `fundraising`, ...) are recorded for analysis; the model predicts the binary target
 (`political_solicitation` / `not_political_solicitation`). Ambiguous or contentless messages are
 marked `review_required` and excluded from training.
@@ -55,7 +55,7 @@ veto evaluate            # print saved metrics (artifacts/evaluation.json)
 veto predict "Election Day is tomorrow. Vote YES on Proposition 12."
 ```
 
-(`vito` is installed as an alias for `veto`.) Labels live in the private
+Labels live in the private
 `data/annotations/solicitation_labels.csv` (columns `message_id,label,subtype,review_required,
 review_reason,label_source`). Python use:
 

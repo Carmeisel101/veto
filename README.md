@@ -73,7 +73,7 @@ Artifacts (`artifacts/`, `models/`) are gitignored: they can contain message tex
 - Only 3 positives in ~89 labeled messages; validation and test each hold 1 positive.
 - Threshold selection and model comparison are therefore essentially noise.
 - Labels were assigned by an AI assistant reading the text against the definitions above
-  (`label_source = claude_manual_review`); they have not been human-audited.
+  (`label_source = automated_review`); they have not been human-audited.
 - Only a single recipient's messages; no group-by-sender analysis yet.
 
 See [docs/corpus.md](docs/corpus.md) for the schema, labeling definitions and rebuild details.

@@ -9,9 +9,8 @@ The output is **private**: it contains message contents and phone numbers. It li
 ## Quick start
 
 ```bash
-source .venv/bin/activate
-python scripts/extract_raw.py --overwrite          # last 6 months (default)
-python scripts/extract_raw.py --overwrite --months 0   # everything
+uv run python scripts/extract_raw.py --overwrite          # last 6 months (default)
+uv run python scripts/extract_raw.py --overwrite --months 0   # everything
 ```
 
 Expected log (counts only, never message text):
@@ -103,20 +102,25 @@ or with `U+FFFD`, inspect a sample blob and adjust the decoder (the tests in
 
 ## Running inside iCloud Drive
 
-If the repository lives in iCloud Drive (for example
-`~/Library/Mobile Documents/com~apple~CloudDocs/...`), the editable install of the project can
-break. Symptom:
+**Recommendation: keep the project outside iCloud Drive**, for example at `~/Code/veto`.
+In a normal local folder, `uv run` works with no extra steps, Git is safe, and your private
+message data under `data/` is not synced to iCloud. (Note that `~/Cloud` and `~/iCloud` can be
+shortcuts into iCloud Drive; don't use those either.)
+
+If the repository does live in iCloud Drive (for example
+`~/Library/Mobile Documents/com~apple~CloudDocs/...`), the editable install of the project
+breaks. Symptom:
 
 ```text
 ModuleNotFoundError: No module named 'veto'
 ```
 
-Cause: `pip install -e .` creates a `.pth` file in the virtualenv that points Python at `src/`.
+Cause: the editable install creates a `.pth` file in the virtualenv that points Python at `src/`.
 iCloud marks files in the synced folder as *hidden*, and Python ignores hidden `.pth` files, so
 the `veto` package is never found. Clearing the flag (`chflags nohidden ...`) does not last,
 because iCloud re-applies it.
 
-Two ways around it:
+Workarounds if you cannot move the project:
 
 **1. Point Python at `src/` explicitly** (no setup; use per command):
 
@@ -135,16 +139,25 @@ chflags nohidden .venv.nosync/lib/python3.12/site-packages/*.pth
 source .venv/bin/activate
 ```
 
-A venv outside iCloud entirely (for example `~/.venvs/veto`) also works.
+**3. Put uv's environment elsewhere**, by adding this to `~/.zshrc`:
 
-Note that the private data under `data/` is also inside iCloud Drive and will sync to your iCloud
-account. That is separate from Git and does not expose it publicly, but keep it in mind if
+```bash
+export UV_PROJECT_ENVIRONMENT="$HOME/.venvs/veto"
+```
+
+Moving the project is simpler than any of these. Copy it (for example with
+`rsync -a --exclude='.venv' <old path>/veto ~/Code/`), check it with `uv run pytest`, and only
+then delete the iCloud copy. The old `.venv` cannot be moved (it contains absolute paths); `uv`
+recreates it.
+
+Without moving, the private data under `data/` is also inside iCloud Drive and will sync to your
+iCloud account. That is separate from Git and does not expose it publicly, but keep it in mind if
 iCloud sharing or other devices are a concern.
 
 ## After extraction
 
 ```bash
-veto corpus build
+uv run veto corpus build
 ```
 
 The label annotations are keyed by `message_id`. A larger or differently filtered raw file

@@ -87,8 +87,11 @@ Annotations live outside the corpus (e.g. `data/annotations/labels.csv`) with co
 ## Rebuilding
 
 ```bash
-python -m veto.corpus [--raw data/raw/data.parquet] [--out data/corpus/corpus.parquet] \
-    [--annotations data/annotations/labels.csv]
+uv run veto corpus build        # defaults: data/raw/data.parquet -> data/corpus/corpus.parquet
+
+# custom paths (and optional annotations in the original political/non_political scheme):
+uv run python -m veto.corpus --raw data/raw/data.parquet --out data/corpus/corpus.parquet \
+    --annotations data/annotations/labels.csv
 ```
 
 Logs contain aggregate counts only, never message text.

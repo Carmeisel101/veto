@@ -12,7 +12,11 @@ gitignored. Never commit them.
 ## Raw input
 
 A Parquet file (default `data/raw/data.parquet`), treated as immutable, produced from macOS
-`chat.db` (see the exploratory notebook for the extraction query). Required columns:
+`chat.db` by `scripts/extract_raw.py` (logic in `src/veto/extraction/`). The extraction keeps
+incoming messages only, does **not** filter on non-null `text`, and recovers bodies from the
+`attributedBody` blob when `message.text` is NULL (common on recent macOS). By default it keeps
+the last 6 months (`--months 0` for everything); a message in several chats yields one row.
+Required columns:
 
 | column | meaning |
 |---|---|

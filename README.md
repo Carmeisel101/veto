@@ -48,6 +48,7 @@ calls. Tests use synthetic messages only.
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
+python scripts/extract_raw.py   # chat.db -> data/raw/data.parquet (needs Full Disk Access)
 veto corpus build        # raw -> data/corpus/corpus.parquet
 veto corpus inspect      # label join, duplicate groups, splits, artifacts/dataset_report.*
 veto train               # baseline + fine-tune, compare, save best to models/veto/

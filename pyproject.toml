@@ -7,7 +7,7 @@ name = "veto"
 version = "0.1.0"
 description = "Privacy-focused identification of political text messages."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.14"
 dependencies = [
     "pandas>=2.0",
     "pyarrow>=14",
@@ -26,6 +26,13 @@ dev = [
     "ruff>=0.5",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=4",
+    "ruff>=0.5",
+]
+
 [project.scripts]
 veto-build-corpus = "veto.corpus.builder:main"
 veto = "veto.cli:main"
@@ -35,6 +42,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 100

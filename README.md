@@ -84,6 +84,28 @@ VetoClassifier.load("models/veto").predict("...")
 
 Artifacts (`artifacts/`, `models/`) are gitignored: they can contain message text.
 
+## Models are not distributed: train your own
+
+Trained model files are **not** published with this repository, and `models/` is gitignored.
+Veto's training data is a person's private text messages, and a fine-tuned model can memorize
+parts of its training data (names, phone numbers, message text). Publishing weights would risk
+leaking that data, so each user trains their own model **on their own device, from their own
+messages**.
+
+To get a model:
+
+1. Extract your messages (macOS only, needs Full Disk Access):
+   `uv run python scripts/extract_raw.py`
+2. Build the corpus: `uv run veto corpus build`
+3. Label it. Write `data/annotations/solicitation_labels.csv` following the definitions above
+   and the schema in [docs/corpus.md](docs/corpus.md). Labels are specific to you and are not
+   shipped either.
+4. Train: `uv run veto train`. The model, threshold and metadata are saved to `models/veto/`.
+5. Use it: `uv run veto predict "..."` or `VetoClassifier.load("models/veto")`.
+
+Everything runs locally; no message or model is uploaded anywhere. Do not commit or share your
+`data/`, `models/` or `artifacts/` folders.
+
 ## Current limitations
 
 - 117 positives among ~9,000 labeled messages; validation and test hold 24 positives each, so a
@@ -100,3 +122,8 @@ Artifacts (`artifacts/`, `models/`) are gitignored: they can contain message tex
 - Only a single recipient's messages; no group-by-sender analysis yet.
 
 See [docs/corpus.md](docs/corpus.md) for the schema, labeling definitions and rebuild details.
+
+## License
+
+[MIT](LICENSE). The license covers the code in this repository only; it does not cover, and the
+repository does not contain, any message data or trained models.

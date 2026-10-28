@@ -135,7 +135,8 @@ those folders (or notebooks with saved outputs) are rejected.
   excluded as `review_required`.
 - Only a single recipient's messages; no group-by-sender analysis yet.
 
-See [docs/corpus.md](docs/corpus.md) for the schema, labeling definitions and rebuild details.
+See [docs/model_card.md](docs/model_card.md) for the model card (specs, data, results, limits) and
+[docs/corpus.md](docs/corpus.md) for the schema, labeling definitions and rebuild details.
 
 ## Contributing
 

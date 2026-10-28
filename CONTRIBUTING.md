@@ -29,6 +29,20 @@ Veto is built from people's private text messages. To keep contributors and byst
 - When reporting a bug or a mislabeled example, **describe it or rewrite it** instead of pasting
   the original message. Replace names, numbers and links with placeholders.
 
+### Automated checks
+
+Every pull request runs three checks in GitHub Actions (`.github/workflows/ci.yml`), and all
+must pass before merging:
+
+- **No private data committed**: fails if any commit in the PR adds a file under `data/`,
+  `models/`, `artifacts/`, `checkpoints/`, `outputs/`, `eda/` or `demo/`, a Messages database,
+  trained-model weights, a Parquet file outside `examples/`, or a notebook with saved outputs.
+  It looks at every commit in your branch, so deleting a file in a later commit does not hide it.
+  Run the same check locally with `python3 scripts/check_private_files.py --base main`.
+- **Lint**: `ruff check .`
+- **Tests**: `pytest`, run offline (model downloads are blocked, so tests must not need real
+  weights).
+
 If you accidentally commit private data, email dev.meisel+veto@gmail.com right away so the
 history can be rewritten. Deleting the file in a later commit is not enough.
 
@@ -61,6 +75,7 @@ the virtualenv and breaks `import veto`. See
    ```bash
    uv run pytest
    uv run ruff check .
+   python3 scripts/check_private_files.py --base main   # no private files in your commits
    ```
 6. **Update the docs** (`README.md`, `docs/`) when you change behavior, options or file formats.
 

@@ -117,7 +117,8 @@ To get a model:
 5. Use it: `uv run veto predict "..."` or `VetoClassifier.load("models/veto")`.
 
 Everything runs locally; no message or model is uploaded anywhere. Do not commit or share your
-`data/`, `models/` or `artifacts/` folders.
+`data/`, `models/` or `artifacts/` folders. CI enforces this: pull requests that add files under
+those folders (or notebooks with saved outputs) are rejected.
 
 ## Current limitations
 

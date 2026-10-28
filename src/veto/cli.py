@@ -32,7 +32,17 @@ def main(argv: list[str] | None = None) -> None:
     for name, typ in (("seed", int), ("epochs", int), ("batch_size", int),
                       ("learning_rate", float)):
         t.add_argument(f"--{name.replace('_', '-')}", dest=name, type=typ, default=None)
-    sub.add_parser("evaluate", help="print the saved evaluation summary")
+    ev = sub.add_parser("evaluate", help="print the saved evaluation summary")
+    ev.add_argument("--artifacts", type=Path, default=Path("artifacts"))
+
+    d = sub.add_parser("demo", help="run the full pipeline on the synthetic example dataset")
+    d.add_argument("--raw", type=Path, default=Path("examples/synthetic/raw.parquet"))
+    d.add_argument("--labels", type=Path,
+                   default=Path("examples/synthetic/solicitation_labels.csv"))
+    d.add_argument("--out-dir", type=Path, default=Path("demo"))
+    for name, typ in (("seed", int), ("epochs", int), ("batch_size", int),
+                      ("learning_rate", float)):
+        d.add_argument(f"--{name.replace('_', '-')}", dest=name, type=typ, default=None)
 
     pr = sub.add_parser("predict", help="classify a message with the saved model")
     pr.add_argument("message")
@@ -57,8 +67,22 @@ def main(argv: list[str] | None = None) -> None:
         prepare_dataset(cfg)
         res = run_all(cfg)
         print(json.dumps({k: res[k] for k in ("selected", "selection_rule")}, indent=2))
+    elif args.cmd == "demo":
+        from veto.corpus.builder import build_corpus_from_files
+        from veto.training.pipeline import prepare_dataset, run_all
+
+        cfg, out = _cfg(args), args.out_dir
+        build_corpus_from_files(args.raw, out / "corpus.parquet")
+        prepare_dataset(cfg, corpus_path=out / "corpus.parquet", annotations_path=args.labels,
+                        out_path=out / "processed" / "labeled.parquet",
+                        artifacts=out / "artifacts")
+        res = run_all(cfg, artifacts=out / "artifacts", model_dir=out / "models" / "veto",
+                      labeled_path=out / "processed" / "labeled.parquet")
+        print(json.dumps({k: res[k] for k in ("selected", "selection_rule")}, indent=2))
+        print(f"Results: {out}/artifacts/evaluation.json  Model: {out}/models/veto "
+              f"(try: veto predict --model-dir {out}/models/veto \"...\")")
     elif args.cmd == "evaluate":
-        res = json.loads(Path("artifacts/evaluation.json").read_text())
+        res = json.loads((args.artifacts / "evaluation.json").read_text())
         for k in ("baseline", "finetuned"):
             r = res[k]
             r = {a: b for a, b in r.items() if a != "validation_threshold_table"}

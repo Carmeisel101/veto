@@ -84,6 +84,19 @@ VetoClassifier.load("models/veto").predict("...")
 
 Artifacts (`artifacts/`, `models/`) are gitignored: they can contain message text.
 
+## Try it without your own data
+
+A synthetic example dataset (1,000 invented messages, 10% political solicitations) ships in
+`examples/synthetic/`, so you can run the whole pipeline immediately:
+
+```bash
+uv run veto demo        # about 2 minutes; outputs go to demo/ (gitignored)
+uv run veto evaluate --artifacts demo/artifacts
+```
+
+See [docs/synthetic.md](docs/synthetic.md). The demo model illustrates the pipeline only; it is
+not a useful filter.
+
 ## Models are not distributed: train your own
 
 Trained model files are **not** published with this repository, and `models/` is gitignored.

@@ -136,6 +136,11 @@ Everything runs locally; no message or model is uploaded anywhere. Do not commit
 
 See [docs/corpus.md](docs/corpus.md) for the schema, labeling definitions and rebuild details.
 
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) first; it includes the
+privacy rules (never share real messages) and development setup.
+
 ## License
 
 [MIT](LICENSE). The license covers the code in this repository only; it does not cover, and the

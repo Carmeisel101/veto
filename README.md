@@ -97,6 +97,21 @@ uv run veto evaluate --artifacts demo/artifacts
 See [docs/synthetic.md](docs/synthetic.md). The demo model illustrates the pipeline only; it is
 not a useful filter.
 
+## Export to Core ML (for the iOS app)
+
+The selected model can be exported as a single, self-describing Core ML artifact for a separate
+iOS app to consume (the app is intentionally not part of this repository):
+
+```bash
+uv sync --extra coreml            # once (macOS)
+uv run veto export coreml         # -> dist/coreml/{veto.mlpackage, metadata.json, tokenizer/}
+```
+
+The export is verified against Python inference (zero decision disagreements on the committed
+test strings). See [docs/coreml_export.md](docs/coreml_export.md) for the tokenizer contract,
+model interface, parity results, size (about 46 MB) and limitations. `dist/` is gitignored
+because it contains trained weights.
+
 ## Models are not distributed: train your own
 
 Trained model files are **not** published with this repository, and `models/` is gitignored.
@@ -117,7 +132,7 @@ To get a model:
 5. Use it: `uv run veto predict "..."` or `VetoClassifier.load("models/veto")`.
 
 Everything runs locally; no message or model is uploaded anywhere. Do not commit or share your
-`data/`, `models/` or `artifacts/` folders. CI enforces this: pull requests that add files under
+`data/`, `models/`, `artifacts/` or `dist/` folders. CI enforces this: pull requests that add files under
 those folders (or notebooks with saved outputs) are rejected.
 
 ## Current limitations

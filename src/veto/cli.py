@@ -44,6 +44,19 @@ def main(argv: list[str] | None = None) -> None:
                       ("learning_rate", float)):
         d.add_argument(f"--{name.replace('_', '-')}", dest=name, type=typ, default=None)
 
+    ex = sub.add_parser("export", help="export the selected model for deployment")
+    exsub = ex.add_subparsers(dest="target", required=True)
+    cm = exsub.add_parser("coreml", help="export to Core ML (dist/coreml/)")
+    cm.add_argument("--model-dir", type=Path, default=Path("models/veto"))
+    cm.add_argument("--output", type=Path, default=Path("dist/coreml"))
+    cm.add_argument("--precision", choices=("fp16", "fp32"), default="fp16")
+    cm.add_argument("--deployment-target", choices=("iOS16", "iOS17", "iOS18"), default="iOS17")
+    cm.add_argument("--no-verify", action="store_true", help="skip the Python/Core ML parity check")
+    cm.add_argument("--local-sample", type=int, default=None,
+                    help="validation/test messages for local parity (default: all of them)")
+    cm.add_argument("--labeled", type=Path, default=Path("data/processed/labeled.parquet"))
+    cm.add_argument("--benchmark", action="store_true", help="measure local latency")
+
     pr = sub.add_parser("predict", help="classify a message with the saved model")
     pr.add_argument("message")
     pr.add_argument("--model-dir", type=Path, default=Path("models/veto"))
@@ -81,6 +94,10 @@ def main(argv: list[str] | None = None) -> None:
         print(json.dumps({k: res[k] for k in ("selected", "selection_rule")}, indent=2))
         print(f"Results: {out}/artifacts/evaluation.json  Model: {out}/models/veto "
               f"(try: veto predict --model-dir {out}/models/veto \"...\")")
+    elif args.cmd == "export":
+        from veto.export.cli import run_export_coreml
+
+        raise SystemExit(run_export_coreml(args))
     elif args.cmd == "evaluate":
         res = json.loads((args.artifacts / "evaluation.json").read_text())
         for k in ("baseline", "finetuned"):

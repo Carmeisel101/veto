@@ -1,0 +1,285 @@
+{
+ "note": "Invented, non-sensitive strings for Core ML parity tests. Names, numbers and URLs are made up (reserved 555-01XX numbers and .example domains).",
+ "examples": [
+  {
+   "category": "campaign_solicitation",
+   "text": "Dana Whitfield for Governor: safer neighborhoods, better schools, lower costs. Early voting starts Oct. 19. Learn more: vote-now.example/Ab12 Reply STOP to end"
+  },
+  {
+   "category": "campaign_solicitation",
+   "text": "Marcus Okafor here. Ravi Castellano has spent years raising your taxes. Don't let them win in November. Make your plan to vote early: my-plan.example/Q7xk2P\nStop2End"
+  },
+  {
+   "category": "campaign_solicitation",
+   "text": "Hi Sam, this is Priya, a volunteer for Tomas Lindqvist's campaign. Can we count on your vote for Tomas for County Judge? Reply YES or NO."
+  },
+  {
+   "category": "campaign_solicitation",
+   "text": "It's up to YOU to stop Elena Voss. Make your plan to vote ASAP >> act-now.example/H9bTz4 Reply STOP to opt out"
+  },
+  {
+   "category": "campaign_solicitation",
+   "text": "Your neighbors are ready to VOTE EARLY for Jamal Brennan. ARE YOU? Early voting starts Nov. 3. join-us.example/ks3gNV"
+  },
+  {
+   "category": "political_fundraising",
+   "text": "Dana Whitfield here. We're 40% short of our end-of-month goal. Chip in $25 before midnight: give-today.example/Xy98"
+  },
+  {
+   "category": "political_fundraising",
+   "text": "Marcus Okafor (D): 49%\nRavi Castellano (R): 47%\n\nHelp Marcus close the gap by rushing a donation TODAY: give-today.example/2kHJFH\nStop2End"
+  },
+  {
+   "category": "political_fundraising",
+   "text": "FINAL HOURS: we need $50k to hit our goal and win in November. Rush a donation: give-today.example/F3m9Qa"
+  },
+  {
+   "category": "political_fundraising",
+   "text": "Please don't ignore this text. We can't miss our $2M goal. Donate before tonight's midnight deadline >> give-today.example/B8xN4c\nEnd2End"
+  },
+  {
+   "category": "political_fundraising",
+   "text": "It's Tomas Lindqvist. You haven't chipped in yet and we're TIED. Will you donate $10 right now? give-today.example/Zp61Lw"
+  },
+  {
+   "category": "advocacy",
+   "text": "Citizens for Safe Streets: Tell your legislators to protect public safety. Call Nia Sterling's office today at +12125550120. Reply STOP to opt out."
+  },
+  {
+   "category": "advocacy",
+   "text": "The Clean Water Now Coalition needs you. Clean water is on the line in the state legislature this week. Take action: act-now.example/Wq82Rt"
+  },
+  {
+   "category": "advocacy",
+   "text": "Thanks for joining the Alliance for Public Schools! Stay tuned for ways to fight for school funding. Reply STOP to unsubscribe."
+  },
+  {
+   "category": "advocacy",
+   "text": "Elena Voss voted against affordable housing. Hold her accountable. Add your name: act-now.example/Hn40Ds"
+  },
+  {
+   "category": "election_reminder",
+   "text": "Early voting starts Oct. 19! Find your polling place and make your plan to vote: my-plan.example/n75HLv"
+  },
+  {
+   "category": "election_reminder",
+   "text": "Election Day is Nov. 3. Polls are open 7am-7pm. Not sure where to vote? my-plan.example/Tr93Xe"
+  },
+  {
+   "category": "election_reminder",
+   "text": "Hi Kim, this is Wes, a volunteer with Neighbors for Fair Housing reminding neighbors about voting. Have you made a plan to vote? Reply YES, NO, or ALREADY VOTED."
+  },
+  {
+   "category": "election_reminder",
+   "text": "Reminder: the deadline to register to vote is Oct. 5. Check your registration: my-plan.example/Gb27Yu"
+  },
+  {
+   "category": "candidate_update",
+   "text": "BREAKING: Rhea Vance just unveiled a plan to cut costs for working families. See it here: join-us.example/Xs18Pq"
+  },
+  {
+   "category": "candidate_update",
+   "text": "Join Felix Ashworth for a rally Saturday at the Grange Hall. RSVP: join-us.example/iNwCq7"
+  },
+  {
+   "category": "candidate_update",
+   "text": "Volunteer with Zoe Voss's campaign this weekend! Free pizza and training at Lincoln High gym. Sign up: join-us.example/Mt50Vd"
+  },
+  {
+   "category": "ballot_measure_advocacy",
+   "text": "Vote YES on Proposition 12 to fix our roads. Early voting is open now. Find your polling place: vote-now.example/Pr12Yz Reply STOP to end"
+  },
+  {
+   "category": "ballot_measure_advocacy",
+   "text": "Proposition 7 would raise your property taxes by 20%. Vote NO on Prop 7 on Nov. 3. Paid for by Taxpayers United Fund. act-now.example/Nq77Kb"
+  },
+  {
+   "category": "ballot_measure_advocacy",
+   "text": "Sign the petition to put school funding on the ballot. Add your name: act-now.example/Pe3dRs"
+  },
+  {
+   "category": "poll_survey",
+   "text": "Quick survey from Meridian Opinion Lab: do you approve of Dana Whitfield's job performance? Reply 1=Approve 2=Disapprove 3=Not sure. Reply STOP to end."
+  },
+  {
+   "category": "poll_survey",
+   "text": "Sam, who do you plan to vote for in the 2026 race for Mayor? A. Hana Delgado (D) B. Cole Fairchild (R) C. Other/Undecided"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "are we still on for dinner saturday?"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "Running about 15 min late, save me a seat"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "Mom says dinner is at 6, can you pick up ice on the way?"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "lol I can't believe he said that 😂"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "Good morning 🩷 how did you sleep?"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "Can you send me that photo from the lake? I want to print it"
+  },
+  {
+   "category": "personal_conversation",
+   "text": "Just landed, call you in a bit"
+  },
+  {
+   "category": "personal_political_conversation",
+   "text": "Did you watch the debate last night? I thought Dana did pretty well"
+  },
+  {
+   "category": "personal_political_conversation",
+   "text": "Did you vote yet?"
+  },
+  {
+   "category": "personal_political_conversation",
+   "text": "Ugh this election season is exhausting, my uncle won't stop posting about it"
+  },
+  {
+   "category": "personal_political_conversation",
+   "text": "I'm voting for Marcus but don't tell my dad lol"
+  },
+  {
+   "category": "personal_political_conversation",
+   "text": "We should read the ballot propositions together before we go vote"
+  },
+  {
+   "category": "personal_political_conversation",
+   "text": "The line at the polling place was so long this morning"
+  },
+  {
+   "category": "transactional",
+   "text": "Your Boltwear verification code is 482913. It expires in 10 minutes. Don't share it."
+  },
+  {
+   "category": "transactional",
+   "text": "Reminder: your appointment at Greenleaf Dental is Nov. 5 at 3:30 PM. Reply C to confirm."
+  },
+  {
+   "category": "transactional",
+   "text": "Your package will arrive today between 2pm and 5pm. Track: track.example/Lk28Vz"
+  },
+  {
+   "category": "transactional",
+   "text": "Fraud alert: did you attempt a $50 purchase at an unfamiliar merchant? Reply YES or NO."
+  },
+  {
+   "category": "commercial_marketing",
+   "text": "Boltwear: 30% off sitewide through Sunday. Use code SAVE30. shop.example/Bw30Xr Reply STOP to opt out."
+  },
+  {
+   "category": "commercial_marketing",
+   "text": "Vote for your favorite flavor! The winner joins the Sunnyside Coffee lineup. Cast your vote: shop.example/Fl92Aa"
+  },
+  {
+   "category": "commercial_marketing",
+   "text": "Election Day Sale: 40% off all outerwear at Trailforge. shop.example/Ed40Pk Text STOP to cancel."
+  },
+  {
+   "category": "commercial_marketing",
+   "text": "FreshCrate: your cart is waiting. Complete your order and get free shipping: shop.example/Cr11Mm"
+  },
+  {
+   "category": "ordinary_spam",
+   "text": "Hello, this is Priya with Orbit Outfitters Remote Recruitment. Earn $200-$500 a day working 2 hours from home. Text +12125550142 for details."
+  },
+  {
+   "category": "ordinary_spam",
+   "text": "Your toll account is past due. Pay $6 now to avoid a late fee: pay.example/Tl88Qs"
+  },
+  {
+   "category": "ordinary_spam",
+   "text": "We could not deliver your package. Update your address here: pay.example/Ad54Bx"
+  },
+  {
+   "category": "ordinary_spam",
+   "text": "Congratulations! You've been selected for a $500 gift card. Claim it: pay.example/Gc01Zz"
+  },
+  {
+   "category": "short_message",
+   "text": "ok"
+  },
+  {
+   "category": "short_message",
+   "text": "yes"
+  },
+  {
+   "category": "short_message",
+   "text": "?"
+  },
+  {
+   "category": "short_message",
+   "text": "lol"
+  },
+  {
+   "category": "short_message",
+   "text": "👍"
+  },
+  {
+   "category": "short_message",
+   "text": "Vote"
+  },
+  {
+   "category": "short_message",
+   "text": "STOP"
+  },
+  {
+   "category": "short_message",
+   "text": "Chip in $5"
+  },
+  {
+   "category": "short_message",
+   "text": "Hi"
+  },
+  {
+   "category": "long_message",
+   "text": "Dana Whitfield here. For too long, our community has been ignored by those in power. Ravi Castellano and his allies have voted again and again to raise your taxes while our schools and roads fall behind. For too long, our community has been ignored by those in power. Ravi Castellano and his allies have voted again and again to raise your taxes while our schools and roads fall behind. For too long, our community has been ignored by those in power. Ravi Castellano and his allies have voted again and again to raise your taxes while our schools and roads fall behind. For too long, our community has been ignored by those in power. Ravi Castellano and his allies have voted again and again to raise your taxes while our schools and roads fall behind. Make your plan to vote early and help us win: vote-now.example/Lg99Hh Reply STOP to end"
+  },
+  {
+   "category": "long_message",
+   "text": "Hey, so I was thinking about this weekend. We could drive out to the lake early, grab breakfast on the way, and then spend the afternoon on the water if the weather holds up, then head back before dinner. We could drive out to the lake early, grab breakfast on the way, and then spend the afternoon on the water if the weather holds up, then head back before dinner. We could drive out to the lake early, grab breakfast on the way, and then spend the afternoon on the water if the weather holds up, then head back before dinner. We could drive out to the lake early, grab breakfast on the way, and then spend the afternoon on the water if the weather holds up, then head back before dinner. We could drive out to the lake early, grab breakfast on the way, and then spend the afternoon on the water if the weather holds up, then head back before dinner. "
+  },
+  {
+   "category": "contains_url",
+   "text": "https://vote-now.example/Ab12"
+  },
+  {
+   "category": "contains_url",
+   "text": "check this out: shop.example/Ur55Ee it's hilarious"
+  },
+  {
+   "category": "contains_url",
+   "text": "Donate: give-today.example/Dn73Jj"
+  },
+  {
+   "category": "stop_end_language",
+   "text": "Reply STOP to end"
+  },
+  {
+   "category": "stop_end_language",
+   "text": "Text STOP to cancel."
+  },
+  {
+   "category": "stop_end_language",
+   "text": "Stop2End"
+  },
+  {
+   "category": "stop_end_language",
+   "text": "Marcus Okafor for Senate. Learn more: vote-now.example/Se19Ww\nReply STOP to opt out"
+  },
+  {
+   "category": "stop_end_language",
+   "text": "stop calling me, I'm in a meeting"
+  }
+ ]
+}

@@ -55,7 +55,8 @@ def test_clean_repo_passes(repo):
 @pytest.mark.parametrize("path", [
     "data/raw/data.parquet", "data/notes.txt", "models/veto/model.safetensors",
     "artifacts/evaluation.json", "checkpoints/step1.ckpt", "outputs/x.txt", "eda/n.ipynb",
-    "demo/corpus.parquet", "chat.db", "weights/model.joblib", "tables/export.parquet",
+    "demo/corpus.parquet", "dist/coreml/metadata.json", "release/veto.mlpackage/Manifest.json",
+    "chat.db", "weights/model.joblib", "tables/export.parquet",
 ])
 def test_forbidden_paths_fail(repo, path):
     commit(repo, {path: "synthetic"})
@@ -111,7 +112,8 @@ def test_base_check_passes_for_clean_branch(repo):
 
 
 @pytest.mark.parametrize("path,expected", [
-    ("data/x", True), ("models/a/b", True), ("artifacts/e.json", True), ("src/a.py", False),
+    ("data/x", True), ("dist/coreml/veto.mlpackage/Data/w.bin", True), ("models/a/b", True),
+    ("artifacts/e.json", True), ("src/a.py", False),
     ("examples/synthetic/raw.parquet", False), ("README.md", False),
 ])
 def test_forbidden_reason(path, expected):

@@ -60,3 +60,4 @@ outputs/
 
 # Output of `veto demo` (synthetic example run)
 demo/
+dist/

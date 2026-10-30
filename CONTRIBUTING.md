@@ -19,7 +19,7 @@ Veto is built from people's private text messages. To keep contributors and byst
   `555-01XX` phone numbers and `.example` domains.
 - **Clear notebook outputs before committing** (`Cell > All Output > Clear`). Saved outputs
   often contain message text.
-- **Do not commit** `data/`, `models/`, `artifacts/`, `checkpoints/`, `outputs/` or `eda/`. They
+- **Do not commit** `data/`, `models/`, `artifacts/`, `checkpoints/`, `outputs/`, `dist/` or `eda/`. They
   are gitignored; don't override that. Files in `artifacts/` (such as `error_analysis.json`)
   contain message text.
 - **Do not upload** models trained on private data. A fine-tuned model can memorize parts of its

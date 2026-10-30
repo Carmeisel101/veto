@@ -110,8 +110,9 @@ Single-message inference with the fine-tuned model on an Apple M2 Pro (PyTorch, 
 | Apple GPU (MPS) | about 4-5 ms | about 6 ms |
 
 The full pipeline (both models plus cross-validation) trains in roughly 20 minutes on that
-machine. Core ML conversion and on-device (iPhone) performance have **not** been measured; they
-are a later milestone.
+machine. A Core ML export of the saved v1 exists (see [coreml_export.md](coreml_export.md)); it measured
+2.2 ms per message on this Mac's Neural Engine/GPU path, but on-device (iPhone) performance has
+**not** been measured.
 
 ### Decision threshold
 

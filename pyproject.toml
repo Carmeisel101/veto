@@ -27,6 +27,9 @@ dev = [
     "pytest-cov>=4",
     "ruff>=0.5",
 ]
+coreml = [
+    "coremltools>=9.0",
+]
 
 [dependency-groups]
 dev = [
@@ -41,6 +44,9 @@ veto = "veto.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+veto = ["export/parity_fixtures.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

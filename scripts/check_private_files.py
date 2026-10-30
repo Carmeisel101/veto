@@ -4,9 +4,10 @@
 Checks (standard library only, so it runs anywhere with git and Python 3):
 
 1. No tracked file lives under the private directories: data/, models/, artifacts/,
-   checkpoints/, outputs/, eda/, demo/ (all gitignored by design).
-2. No tracked file looks like a private artifact: Messages databases, trained-model weights, or
-   Parquet files outside examples/ (the synthetic example data is allowed).
+   checkpoints/, outputs/, eda/, demo/, dist/ (all gitignored by design).
+2. No tracked file looks like a private artifact: Messages databases, trained-model weights
+   (including Core ML packages), or Parquet files outside examples/ (the synthetic example data
+   is allowed).
 3. No tracked notebook has saved cell outputs (outputs often contain message text).
 
 With ``--base REF`` the same checks also cover every commit in ``REF..HEAD``, so a file that is
@@ -23,7 +24,8 @@ import json
 import subprocess
 import sys
 
-PRIVATE_DIRS = ("data/", "models/", "artifacts/", "checkpoints/", "outputs/", "eda/", "demo/")
+PRIVATE_DIRS = ("data/", "models/", "artifacts/", "checkpoints/", "outputs/", "eda/", "demo/",
+                "dist/")
 ALLOWED_PREFIXES = ("examples/",)  # synthetic example data only
 PRIVATE_SUFFIXES = (
     ".db", ".sqlite", ".sqlite3",  # Messages / sqlite databases
@@ -45,6 +47,8 @@ def forbidden_reason(path: str) -> str | None:
             return f"is inside the private directory {d}"
     lower = path.lower()
     name = lower.rsplit("/", 1)[-1]
+    if ".mlpackage/" in lower or lower.endswith(".mlpackage"):
+        return "is a Core ML package (it contains trained weights)"
     if name in PRIVATE_NAMES or lower.endswith(PRIVATE_SUFFIXES):
         return "looks like a private database or trained-model file"
     if lower.endswith(".parquet"):
